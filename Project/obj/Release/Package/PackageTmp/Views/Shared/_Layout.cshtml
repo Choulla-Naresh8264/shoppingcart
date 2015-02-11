@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    
+    <title>@ViewBag.Title</title>
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+       <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+
+     <style type="text/css">
+.item {
+    color: #666;
+    background: #333;
+    height: 300px;
+    line-height: 300px; /* Align the text vertically center. */
+    font-size: 52px;
+    text-align: center;    
+    font-family: "trebuchet ms", sans-serif;    
+}
+.carousel{
+    margin-top: 20px;
+}
+.carousel-control{
+	top: 50%;
+}
+.bs-example{
+	margin: 20px;
+
+}
+ body {
+            padding-top:10px;
+        }
+ 
+</style>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="navbar-inner">
+                    
+            <a class="brand" href="#" style="padding-left:70px"> Online Shoping </a>
+        
+            <ul class="nav">
+
+                <li>@Html.ActionLink("Home","Index","Home")</li>
+                <li>@Html.ActionLink("About Us","AboutUs","Home")</li>
+                <li>@Html.ActionLink("Contact Us","ContactUs","Home")</li>
+                <li>@Html.ActionLink("Search","SearchResult","Search")</li>
+                @if(Session["login"] == null)
+                {
+                    <li style="margin-left:650px">@Html.ActionLink("Login","Login","Home")</li>
+                    <li>@Html.ActionLink("Signup","Signup","Home")</li>
+                }
+                else
+                {
+                    <li style="margin-left:700px">@Html.ActionLink("Signout","Signout","Home")</li>
+                }
+            </ul>
+        </div>
+       
+    </div>
+
+    <div class="span3" style="margin-top:60px">
+
+        <div class="well sidebar-nav-fixed">
+            <br><br><br>
+            <h6> CATEGORY </h6>
+            
+            <ul>
+                <li>@Html.ActionLink("Clothes", "../Home/Index", new {category="Clothes"})</li>
+                <li>@Html.ActionLink("Shoes", "../Home/Index", new {category="Shoes"})</li>
+                <li>@Html.ActionLink("Electronics", "../Home/Index", new {category="Electronics"})</li>
+                <li>@Html.ActionLink("Sports", "../Home/Index", new {category="Sports"})</li>
+                <li>@Html.ActionLink("Others", "../Home/Index", new {category="Others"})</li>
+            </ul>
+            <br><br><br>
+        </div>
+
+    </div>
+    <div class="bs-example span9" style="width:79%">
+    <div id="myCarousel" class="carousel slide">
+    	<!-- Carousel indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>   
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div class="active item">
+                
+                <img src="~/Content/themes/image2.jpg" alt="the-buzz-img3"/>
+                
+            </div>
+            <div class="item">Slide 2</div>
+            <div class="item">Slide 3</div>
+        </div>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+</div>
+    
+    
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    
+    
+    
+    <footer class="nav navbar-fixed-bottom" style="background-color : #DBDBD5">
+        COPYRIGHT &copy; 2014
+    </footer>
+
+</body>
+</html>

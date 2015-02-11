@@ -1,0 +1,54 @@
+﻿@model Project.Models.Product
+
+@{String[] pictures = @Model.Pictures.Split(';');}
+
+<div class="span3">
+    <div><h4>Title : @Model.Title</h4></div>
+    <div><h4>Price : @Model.Price</h4></div>
+    <div><h4>Company : @Model.Company</h4></div>
+
+    <input type="hidden" id="is_login" value = "@ViewBag.i" />
+</div>
+<div class="span3">
+    <a href="#" class="thumbnail">
+                <img src="~/Files/@pictures[0]" alt="245x206"></a>
+    <h3>Place Order</h3>
+    @using (Html.BeginForm("AddCart", "ShopingCart", FormMethod.Post))
+    {
+        <h5>Quantity</h5>
+        <input type=text name="quantity" id="q"/> <br>
+        @Html.Hidden("title",@Model.Title);
+        @Html.Hidden("price",@Model.Price);
+        <button class="btn btn-info" type="submit" onclick="return check_login(this)">Add To Cart</button>
+        <br><br><div id="error" style="color:red"> </div>
+        <div><br><br><br><br></div>
+    }
+        
+</div>
+
+<script>
+    function check_login()
+    {
+        var islogin = document.getElementById('is_login').value;
+        var quantity = document.getElementById('q').value;
+        var err = document.getElementById('error');
+        
+        if (islogin == "False")
+        {
+            err.innerText = "* You must have login first";
+            return false;
+        }
+        else
+        {
+            if (quantity.length > 0)
+            {
+                return true;
+            }
+            else
+            {
+                err.innerText = "* Fields cannot be empty";
+                return false;
+            }
+        }
+    }
+</script>

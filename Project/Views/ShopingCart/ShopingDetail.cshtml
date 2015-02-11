@@ -1,0 +1,34 @@
+﻿@model List<Project.Models.ShopingCart>
+
+<div class="span3" >    </div>   
+<div class="span6">
+    <h2>Shopping Details</h2>
+    <div class="bs-example">
+    <table class="table table-striped">
+        <thead>
+            <tr> <th>Product</th> 
+                <th> Quantity</th> 
+                <th>Price</th> 
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price</td>    
+                </tr>
+            }
+            <tr>
+                <td>
+                    @using (Html.BeginForm("CheckOut", "ShopingCart", FormMethod.Post))
+                    {
+                        <input type="submit" class="btn btn-primary" value="Confirm Checkout"/>
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>   
+    </div>
+</div>

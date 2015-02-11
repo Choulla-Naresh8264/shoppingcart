@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    
+    <title>@ViewBag.Title</title>
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="navbar-inner">
+                    
+            <a class="brand" href="#" style="padding-left:70px"> Online Shoping </a>
+        
+            <ul class="nav">
+                <li>@Html.ActionLink("Home","Index","Admin")</li>
+                <li style="margin-left:970px">@Html.ActionLink("Signout","Signout","Admin")</li>
+            </ul>
+        </div>
+       
+    </div>
+
+    <div class="span3" style="margin-top:60px">
+
+        <div class="well sidebar-nav-fixed">
+            <h6> Roles </h6>
+            <ul>
+                <li>@Html.ActionLink("Add Product","Add","Admin")</li>
+                <li>@Html.ActionLink("View Reports","Reports","Admin")</li>
+            </ul>
+            <br><br><br>
+            <h6> CATEGORY </h6>
+            
+            <ul>
+                <li>@Html.ActionLink("Clothes","Products",new {category="Clothes"})</li>
+                <li>@Html.ActionLink("Shoes","Products",new {category="Shoes"})</li>
+                <li>@Html.ActionLink("Electronics","Products",new {category="Electronics"})</li>
+                <li>@Html.ActionLink("Sports","Products",new {category="Sports"})</li>
+                <li>@Html.ActionLink("Others","Products",new {category="Others"})</li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    
+    
+    
+    <footer class="nav navbar-fixed-bottom" style="background-color : #DBDBD5">
+        COPYRIGHT &copy; 2014
+    </footer>
+
+</body>
+</html>

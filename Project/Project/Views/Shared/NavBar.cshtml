@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    
+    <title>@ViewBag.Title</title>
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="navbar-inner">
+                    
+            <a class="brand" href="#" style="padding-left:70px"> Online Shoping </a>
+        
+            <ul class="nav">
+                <li>@Html.ActionLink("Home","Index","Admin")</li>
+            </ul>
+        </div>
+       
+    </div>
+
+    
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    
+    
+    
+    <footer class="nav navbar-fixed-bottom" style="background-color : #DBDBD5">
+        COPYRIGHT &copy; 2014
+    </footer>
+
+</body>
+</html>

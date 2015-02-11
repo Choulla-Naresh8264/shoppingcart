@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+    Layout = "~/Views/Shared/MenuBar.cshtml";
+}
+@model List<Project.Models.SaledProduct>
+<br><br>
+   <br>
+    <div class="well span9" >  
+    <table class="table">
+        <tr><th>Reports</th></tr>
+        <tr><th>Tittle</th><th>Sale Price</th><th>Purchase Price</th><th>Profit</th></tr>
+        @{
+            int totalSale = 0;
+            int totalPurchase = 0;
+            int totalProfit = 0;
+        }
+    @if(Model != null){
+    foreach(var r in Model)
+    {
+        <tr><td>@r.Title</td><td>@r.Sale</td><td>@r.Purchase</td><td>@r.Profit</td></tr>
+   
+            totalSale = totalSale + r.Sale;
+            totalPurchase = totalPurchase + r.Purchase;
+            totalProfit = totalProfit + r.Profit;
+          
+    }}
+    </table>
+    <table class="table">
+        <tr><th>Total Sale</th><th>Total Purchase</th><th>Total Profit</th></tr>
+        <tr><td>@totalSale</td><td>@totalPurchase</td><td>@totalProfit</td></tr>
+    </table>
+</div>

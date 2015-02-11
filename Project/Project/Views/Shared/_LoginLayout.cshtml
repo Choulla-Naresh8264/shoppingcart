@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    
+    <title>@ViewBag.Title</title>
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="navbar-inner">
+                    
+            <a class="brand" href="#" style="padding-left:70px"> Online Shoping </a>
+        
+            <ul class="nav">
+                <li>@Html.ActionLink("Home","Index","Home")</li>
+                <li>@Html.ActionLink("About Us","AboutUs","Home")</li>
+                <li>@Html.ActionLink("Contact Us","ContactUs","Home")</li>
+                <li>@Html.ActionLink("Search","SearchResult","Search")</li>
+                <li style="margin-left:650px">@Html.ActionLink("Login","Login","Home")</li>
+                <li>@Html.ActionLink("Signup","Signup","Home")</li>
+            </ul>
+        </div>
+       
+    </div>
+
+    <div class="span3" style="margin-top:60px">
+
+        <div class="well sidebar-nav-fixed">
+           
+            <br><br><br>
+            <h6> CATEGORY </h6>
+            
+            <ul>
+                <li>@Html.ActionLink("Clothes", "../Home/Index", new {category="Clothes"})</li>
+                <li>@Html.ActionLink("Shoes", "../Home/Index", new {category="Shoes"})</li>
+                <li>@Html.ActionLink("Electronics", "../Home/Index", new {category="Electronics"})</li>
+                <li>@Html.ActionLink("Sports", "../Home/Index", new {category="Sports"})</li>
+                <li>@Html.ActionLink("Others", "../Home/Index", new {category="Others"})</li>
+            </ul>
+            <br><br><br>
+        </div>
+
+    </div>
+    
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    
+    
+    
+    <footer class="nav navbar-fixed-bottom" style="background-color : #DBDBD5">
+        COPYRIGHT &copy; 2014
+    </footer>
+
+</body>
+</html>

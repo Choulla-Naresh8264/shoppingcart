@@ -1,0 +1,37 @@
+﻿@model Project.Models.Product
+
+@{
+    Layout = null;
+    Layout = "~/Views/Shared/MenuBar.cshtml";
+}
+
+<div> <br><br><br></div>
+<div class="span3"> </div>
+<div class="well span6" >
+
+    <h3> Edit Product </h3>
+     @using (Html.BeginForm("Update", "Admin", FormMethod.Post))
+     {
+         @Html.Hidden("categori", @Model.Category);
+         @Html.Hidden("tit", @Model.Title);
+         @Html.Hidden("picture", @Model.Pictures);
+        <table class="table">
+            <tr>
+                <td> @Html.LabelFor(model => model.Price) </td>
+                <td> @Html.TextBoxFor(model => model.Price) </td>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(model => model.Company)</td>
+                <td> @Html.TextBoxFor(model => model.Company)</td>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(model => model.Purchase)</td>
+                <td> @Html.TextBoxFor(model => model.Purchase)</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td><button type="submit" class="btn btn-success">Update Item</button></td>
+            </tr>
+        </table>
+     }
+</div>

@@ -1,0 +1,40 @@
+﻿@model List<Project.Models.Product>
+
+@{
+    Layout = null;
+    Layout = "~/Views/Shared/MenuBar.cshtml";
+}
+<div class="span9" >
+    <br><br><br><h3> @Model[0].Category </h3>
+    <ul class="thumbnails">
+        @foreach(var item in Model)
+        {
+            String []pictures = item.Pictures.Split(';');
+            <li style="width:140%">
+                <div class="thumbnail">
+                    <div style="float:left">Title : @item.Title 
+                        <br/>Price : @item.Price 
+                        <br/> Company : @item.Company
+                        <br/><br/><br />
+                        
+                        <table><tr><td>
+                            @using (Html.BeginForm("Edit", "Admin", FormMethod.Post))
+                            {
+                                @Html.Hidden("title", @item.Title);
+                                <button type="submit" class="btn  btn-info"> Edit</button>
+                            }
+                            </td><td>
+                            @using (Html.BeginForm("Delete", "Admin", FormMethod.Post))
+                            {
+                                @Html.Hidden("title", @item.Title);
+                                <button type="submit" class="btn  btn-info">Delete</button>
+                            }
+                            </td></tr></table></div>
+                   <img src="~/Files/@pictures[0]" alt="Sample Image" height="185" width="185" style="margin-left:90%"/>
+                </div>
+            </li>
+        } 
+    </ul>
+</div>
+
+

@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+    Layout = "~/Views/Shared/MenuBar.cshtml";
+}
+
+<div> <br><br><br></div>
+<div class="span3"> </div>
+<div class="well span6" >
+
+    <h3> Add Product </h3>
+    <form action="AddItem" enctype="multipart/form-data" method="post">
+        <table class="table">
+            <tr>
+                <td> Category</td>
+                <td><select name="catagory">
+                <option> Clothes </option>
+                <option> Shoes </option>
+                <option> Electronics </option>
+                <option> Sports </option>
+                <option> Others </option>
+            </select></td>
+            </tr>
+            <tr>
+                <td> Title</td>
+                <td> <input type="text" name="title" id="t" /></td>
+            </tr>
+            <tr>
+                <td> Price</td>
+                <td><input type="text" name="price" id="p"/></td>
+            </tr>
+            <tr>
+                <td> Purchase</td>
+                <td> <input type="text" name="purchase" id="pu"/></td>
+            </tr>
+            <tr>
+                <td> Company</td>
+                <td> <input type="text" name="company" id="c"/></td>
+            </tr>
+            <tr>
+                <td> Picture</td>
+                <td> <input type="File" class="btn btn-success" name="image" id="pic"/></td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td> <input type="submit" value="Add Item" class="btn btn-success" onclick="return check_fields(this)"/></td>
+            </tr>
+            <tr><td><div id="error" style="color:red"> </div></td></tr>
+        </table>
+    </form>
+</div>
+
+<script>
+    function check_fields() {
+        var item_title = document.getElementById('t').value;
+        var item_price = document.getElementById('p').value;
+        var item_purchase = document.getElementById('pu').value;
+        var item_company = document.getElementById('c').value;
+        var item_pictures = document.getElementById('pic').value;
+        var err = document.getElementById('error');
+
+        var n = ~~Number(item_price);
+        var n1 = ~~Number(item_purchase);
+
+        if (item_title.length < 1 || item_price.length < 1 || item_company.length < 1 || item_pictures.length < 1 || item_purchase.length < 1) {
+            err.innerText = "* Fields can not be empty";
+            return false;
+        }
+        else {
+            if (String(n) === item_price && n >= 0) {
+                if (String(n1) === item_purchase && n1 >= 0) {
+                    return true;
+                }
+                else {
+                    err.innerText = "* Purchase field must be integer";
+                    return false;
+                }
+            }
+            else {
+                err.innerText = "* Price field must be integer";
+                return false;
+            }
+        }
+    }
+</script>

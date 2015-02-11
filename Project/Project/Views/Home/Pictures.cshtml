@@ -1,0 +1,14 @@
+﻿@model Project.Models.Product
+
+@{
+    Layout = null;
+}
+
+@{String[] pictures = @Model.Pictures.Split(';');}
+
+<div class="span9">
+    <div class="thumbnail">
+        <img src="~/Files/@pictures[0]" alt="Sample Image" width="500" height="500">
+    </div>
+    <br><br><br>
+</div>   

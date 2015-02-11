@@ -1,0 +1,33 @@
+﻿@model List<Project.Models.Product>
+
+<div class="span9" >
+    <ul class="thumbnails">
+        @foreach(var item in Model)
+        {
+            String []pictures = item.Pictures.Split(';');
+            <li style="width:140%">
+                <div class="thumbnail">
+                    <div style="float:left">Title : @item.Title 
+                        <br/>Price : @item.Price 
+                        <br/> Company : @item.Company
+                        <br/><br/><br />
+                        
+                        <table><tr><td>
+                            @using (Html.BeginForm("Details", "Home", FormMethod.Post))
+                            {
+                                @Html.Hidden("title", @item.Title);
+                                <button type="submit" class="btn  btn-info">Details</button>
+                            }
+                            </td><td>
+                            @using (Html.BeginForm("Pictures", "Home", FormMethod.Post))
+                            {
+                                @Html.Hidden("title", @item.Title);
+                                <button type="submit" class="btn  btn-info">Pictures</button>
+                            }
+                            </td></tr></table></div>
+                   <img src="~/Files/@pictures[0]" alt="Sample Image" height="185" width="185" style="margin-left:90%"/>
+                </div>
+            </li>
+        } 
+    </ul>
+</div>

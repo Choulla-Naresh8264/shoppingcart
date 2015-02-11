@@ -1,0 +1,82 @@
+﻿
+<div class="span3"></div>
+<div class="span6">
+    <h5> SEARCH BY: </h5>
+            
+    <select style="width:50%" id="search">
+        <option > Tittle </option>
+        <option > Price </option>
+        <option > Company </option>
+    </select>
+    <div id="view">
+        <table id=table1>
+            </table>
+    </div>
+</div>
+<div class="span9" style="margin-left:270px"><br><br>
+    <ul class="thumbnails" id="table">
+
+    </ul>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#search').change(function ()
+        {
+            value = $('#search').val();
+            $('#table1 tr').remove();
+            $('#table li').remove();
+            if (value == "Tittle")
+            {
+                $('#table1').append('<tr><td><input type=text id=tittle placeholder="Title" /></td></tr><tr><td><Button id=but>Search</Button></td></tr>');
+                $('#but').click(function ()
+                {
+                    tittle = $('#tittle').val();
+                    $.getJSON("../Search/getProductsByTitle?title=" + tittle, function (data) {
+
+                        $('#table li').remove();
+                        $.each(data, function (i, item)
+                        {
+                            $('#table').append('<li style="width:140%"><div class="thumbnail"><div style="float:left"> Title : ' + item.Title + '<br><br><br><table><tr><td><form method="Post" action="../../Home/Details"><input type="hidden" name="title" value="' + item.Title + '" /><input type=submit class="btn  btn-info" value="Details"/></form></td> <td><form method="Post" action="../../Home/Pictures"><input type="hidden" name="title" value="' + item.Title + '" /><input type=submit class="btn  btn-info" value="Pictures"/></td></tr> </table></div><img src="../../Files/' + item.Pictures + '" alt="Sample Image" height="150" width="150" style="margin-left:90%"/></div></li>');
+
+                        });
+
+                    });
+                });
+            }
+            else if (value == "Price")
+            {
+                $('#table1').append('<tr><td><input type=text id=start placeholder="Start Range" /></td><td><input type=text id=end placeholder="End Range" /></td></tr><tr><td><Button id=but>Search</Button></td></tr>');
+                $('#but').click(function () {
+                    start = $('#start').val();
+                    end = $('#end').val();
+                    $.getJSON("../Search/getProductsByRange?start=" + start + "&end=" + end, function (data) {
+
+                        $('#table li').remove();
+                        $.each(data, function (i, item) {
+                            $('#table').append('<li style="width:140%"><div class="thumbnail"><div style="float:left"> Title : ' + item.Title + '<br><br><br><table><tr><td><form method="Post" action="../../Home/Details"><input type="hidden" name="title" value="' + item.Title + '" /><input type=submit class="btn  btn-info" value="Details"/></form></td> <td><form method="Post" action="../../Home/Pictures"><input type="hidden" name="title" value="' + item.Title + '" /><input type=submit class="btn  btn-info" value="Pictures"/></td></tr> </table></div><img src="../../Files/' + item.Pictures + '" alt="Sample Image" height="150" width="150" style="margin-left:90%"/></div></li>');
+
+                        });
+
+                    });
+                });
+            }
+            else if (value == "Company")
+            {
+                $('#table1').append('<tr><td><input type=text id=tittle placeholder="Company" /></td></tr><tr><td><Button id=but>Search</Button></td></tr>');
+                $('#but').click(function () {
+                    tittle = $('#tittle').val();
+                    $.getJSON("../Search/getProductsByCompany?company=" + tittle, function (data) {
+                                 
+                            $('#table li').remove();
+                            $.each(data, function (i, item)
+                            {
+                                $('#table').append('<li style="width:140%"><div class="thumbnail"><div style="float:left"> Title : ' + item.Title + '<br><br><br><table><tr><td><form method="Post" action="../../Home/Details"><input type="hidden" name="title" value="' + item.Title + '" /><input type=submit class="btn  btn-info" value="Details"/></form></td> <td><form method="Post" action="../../Home/Pictures"><input type="hidden" name="title" value="' + item.Title + '" /><input type=submit class="btn  btn-info" value="Pictures"/></td></tr> </table></div><img src="../../Files/' + item.Pictures + '" alt="Sample Image" height="150" width="150" style="margin-left:90%"/></div></li>');
+
+                            });                       
+                    });
+                });
+            }
+        });
+    });
+</script>
+ <br><br>
